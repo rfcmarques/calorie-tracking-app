@@ -201,6 +201,14 @@ class App {
         document
             .querySelector('#workout-items')
             .addEventListener('click', this._removeItem.bind(this, 'workout'));
+
+        document
+            .querySelector('#filter-meals')
+            .addEventListener('keyup', this._filterItems.bind(this, 'meal'));
+
+        document
+            .querySelector('#filter-workouts')
+            .addEventListener('keyup', this._filterItems.bind(this, 'workout'));
     }
 
     _newItem(type, e) {
@@ -245,6 +253,23 @@ class App {
                 itemCard.remove();
             }
         }
+    }
+
+    _filterItems(type, e) {
+        const text = e.target.value.toLowerCase();
+
+        document
+            .querySelectorAll(`#${type}-items .card`)
+            .forEach(item => {
+                const nameElm = item.firstElementChild.firstElementChild;
+                const name = nameElm.textContent;
+
+                if (name.toLowerCase().indexOf(text) !== -1) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            })
     }
 }
 
