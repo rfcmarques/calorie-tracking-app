@@ -29,10 +29,10 @@ describe('Meal class', () => {
 
     it('should throw an error with invalid name input', () => {
         expect(() => {
-            new Workout([], 100);
+            new Meal([], 100);
         }).toThrow();
         expect(() => {
-            new Workout({}, 100);
+            new Meal({}, 100);
         }).toThrow();
     });
 
@@ -80,7 +80,7 @@ describe('Workout class', () => {
 
     it('should throw an error with negative calorie input', () => {
         expect(() => {
-            new Meal('Pizza', -1);
+            new Workout('Pizza', -1);
         }).toThrow();
     });
 });
